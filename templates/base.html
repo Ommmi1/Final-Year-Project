@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %} {% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- <a href="javascript:history.back()" class="back-button">Back</a> -->
+</head>
+<body>
+	<!-- <header>
+		 <nav>
+			<ul>
+				<li><a href="/register">Register</a></li>
+				<li><a href="/search_user">Search User</a></li>
+				<li><a href="/search">Search Vehicle</a></li>
+				<li><a href="/all_vehicles">Vehicle List</a></li>
+				<li><a href="/">Vehicle Location</a></li>
+
+
+			</ul>
+		</nav> -->
+	</header>
+	<main>
+		{% block content %} {% endblock %}
+	</main>
+	<footer>
+	</footer>
+</body>
+</html>

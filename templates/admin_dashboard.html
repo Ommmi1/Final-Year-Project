@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- -------------------------------HEAD STARTS FROM HERE---------------------------------------------------- -->
+
+  <head>
+    <title>Register - Final Design FYP (VDS)</title>
+    <meta property="og:title" content="Register - Final Design FYP (VDS)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Open Sans;
+        font-size: 1rem;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.625;
+        color: var(--dl-color-secondary-400);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="shortcut icon"
+      href="static/css/photos/47324.png"
+      type="icon/png"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
+      data-tag="font"
+    />
+    <style>
+      html * {
+          -webkit-font-smoothing: antialiased;
+      }
+      input::placeholder, textarea::placeholder {
+         color: #d2d6da;
+      }
+    </style>
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+
+<!-- ---------------------------------- HEAD ENDS HERE -------------------------------------------------- -->
+
+<!--------------------------------- BODY STRATS FROM HERE -------------------------------------------------------->
+  
+
+<body>
+    <div>
+      <link href="static/css/register.css" rel="stylesheet" />
+
+      <div class="register-container">
+        <div class="register-contact">
+          <div class="register-container1">
+            <div class="register-form">
+              <h2 class="register-text HeadingOne">WELCOME ADMIN</h2>
+              <form class="register-form1" method="POST" action="{{ url_for('admin_dashboard') }}">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Is Admin</th>
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.is_admin }}</td>
+                            <td>
+                                <a href="{{ url_for('update', id=user.id) }}">Edit</a>
+                                </td>
+                                <td>
+                                <form action="{{ url_for('delete', id=user.id) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+              </form>
+            
+    
+</div>
+<div class="register-info">
+  <img
+    alt="image"
+    src="static/css/photos/wave-1.svg"
+    class="register-image"
+  />
+  <div class="register-container4"></div>
+</div>
+</div>
+</div>
+
+<!-- -------------------------------BOX AND ITS INFO ENDS HERE ------------------------------------------------>
+
+
+<!-- ---------------------------------FOOTER STARTS FROM HERE ---------------------------------------------->
+
+<footer class="footer-footer">
+<div class="footer-container">
+<div class="footer-container1">
+  <span>This project is created by UIT Students</span>
+</div>
+<div class="footer-container2">
+  <div class="footer-container3">
+    <span class="footer-text1 Large">TEAM MEMBERS</span>
+    <span class="footer-text2 Large">ADNAN SAMAD</span>
+    <span class="footer-text3">MUHAMMAD OMER SIDDIQUI</span>
+    <span class="footer-text4 Large">ALISHA HAMEED</span>
+    <span class="footer-text5 Large">HAFIZ TAHA SHARIF</span>
+  </div>
+</div>
+</div>
+<img
+alt="image"
+src="static/css/photos/waves-white.svg"
+class="footer-image"
+/>
+</footer>
+
+<!-- --------------------------------FOOTER ENDS HERE ---------------------------------------------------------------->
+
+<!-- --------------------------------HEADER STRATS FROM HERE --------------------------------------------->
+
+<div data-role="Header" class="header-header">
+<nav class="header-nav">
+<div class="header-container">
+  <a href="index.html" class="header-navlink Large">
+    Vehicle Detection System
+  </a>
+  <div class="header-full-container1">
+
+    <a class="header-navlink1 Large" href="/register">Register </a>
+    <a class="header-navlink1 Large" href="/search_user">Search Owner </a>
+    <a class="header-navlink1 Large" href="/search">Search Vehicle </a>
+    <a class="header-navlink1 Large" href="/all_vehicles">Vehicle List </a>
+    <a class="header-navlink1 Large" href="/vehicle_location">Vehicle Location </a>
+    <a class="header-navlink1 Large" href="/create_officer">Create Officer </a>
+  </div>
+  <div class="header-container1">
+    <div class="header-container2">
+      <a href="logout" class="header-navlink6">
+        <div class="primary-pink-button-container">
+          <button
+            class="primary-pink-button-button button ButtonSmall"
+          >
+            <span>SIGN OUT</span>
+          </button>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+</body>
+</html>
+
+<!-------------------------------------- HEADER ENDS HERE -------------------------------------------------->
+

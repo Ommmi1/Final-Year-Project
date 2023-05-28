@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-------------------------------------------- HEAD STARTS FROM HERE -------------------------------------->
+
+  <head>
+    <title>VEHICLE DETECTION SYSTEM</title>
+    <meta property="og:title" content="VEHICLE DETECTION SYSTEM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Open Sans;
+        font-size: 1rem;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.625;
+        color: var(--dl-color-secondary-400);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="shortcut icon"
+      href="static/css/photos/47324.png"
+      type="icon/png"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
+      data-tag="font"
+    />
+    <style>
+      html * {
+          -webkit-font-smoothing: antialiased;
+      }
+      input::placeholder, textarea::placeholder {
+         color: #d2d6da;
+      }
+    </style>
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+
+  <!---------------------------------------- HEAD ENDS HERE ----------------------------------------------->
+
+
+  <!------------------------------------- BODY STARTS FROM HERE ------------------------------------------>
+
+  <body>
+    <div>
+      <link href="static/css/home.css" rel="stylesheet" />
+      <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+      <div class="home-container">
+        <div data-role="Header" class="header-header">
+          <nav class="header-nav">
+            <div class="header-container">
+              <a class="header-navlink Large">
+                Vehicle Detection System
+              </a>
+              <div class="header-menu">
+                <a href="/" class="header-navlink1 Large">Home</a>
+                <a href="about_us" class="header-navlink2 Large">
+                  About Us
+                </a>
+              </div>
+              <div class="header-container1">
+                <div class="header-container2">
+                  <a href="login" class="header-navlink3">
+                    <div class="primary-pink-button-container">
+                      <button
+                        class="primary-pink-button-button button ButtonSmall"
+                      >
+                        <span>SIGN IN</span>
+                      </button>
+                    </div>
+                  </a>
+                </div>
+                <div data-role="BurgerMenu" class="header-burger-menu">
+                  <svg viewBox="0 0 1024 1024" class="header-icon">
+                    <path
+                      d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="home-hero">
+          <div class="home-container01">
+            <div class="home-card">
+              <h1 class="home-text HeadingOne">VEHICLE DETECTION SYSTEM</h1>
+              <h1 class="home-text01">
+                Stay Safe on the Road with Our Vehicle Detection System
+              </h1>
+              <span class="home-text02">
+                Efficiently manage traffic and increase safety with our reliable
+                vehicle detection system
+              </span>
+              <div class="home-container02">
+                <div class="home-container03">
+                  <a href="/login" class="home-navlink">
+                    <div class="primary-pink-button-container">
+                      <button
+                        class="primary-pink-button-button button ButtonSmall"
+                      >
+                        <span>SIGN IN</span>
+                      </button>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img
+          alt="image"
+          src="https://images.unsplash.com/photo-1523571991364-a7c2e9bb7b63?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDM1fHxjYXIlMjBzZWN1cml0eXxlbnwwfHx8fDE2ODI0MDU3NDY&amp;ixlib=rb-4.0.3&amp;h=1500"
+          class="home-image"
+        />
+        <section class="home-container04">
+          <div class="home-container05">
+            <h1 class="home-text03 HeadingOne">From road to seat</h1>
+            <span class="home-text04">
+              Easy detection of vehicle from one place
+            </span>
+          </div>
+          <div class="home-container06">
+            <div class="home-container07">
+              <img
+                alt="image"
+                src="https://images.unsplash.com/photo-1591775667978-2222e699c77a?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxtb25pdG9yfGVufDB8fHx8MTY4MjQwNjYzNw&amp;ixlib=rb-4.0.3&amp;w=1100"
+                class="home-image1"
+              />
+              <span class="home-text05">
+                Advanced technology for accurate vehicle detection and real-time
+                tracking
+              </span>
+              <div class="home-container08">
+                <img
+                  alt="image"
+                  src="https://images.unsplash.com/photo-1496368077930-c1e31b4e5b44?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHNlY3VyaXR5fGVufDB8fHx8MTY4MjQwNTYzNQ&amp;ixlib=rb-4.0.3&amp;w=1000"
+                  class="home-image2"
+                />
+              </div>
+            </div>
+            <div class="home-container09">
+              <img
+                alt="image"
+                src="https://images.unsplash.com/photo-1613314188851-2c04697535ab?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDR8fHRyYWZmaWMlMjBwb2xpY2V8ZW58MHx8fHwxNjgyNDA2NDM4&amp;ixlib=rb-4.0.3&amp;w=1100"
+                class="home-image3"
+              />
+              <div class="home-container10">
+                <h3 class="HeadingTwo">
+                  Why Vehicle Detection System with RFID
+                </h3>
+                <p>
+                  <br />
+                  <span>
+                    Vehicle detection systems (VDS) that use Radio Frequency
+                    Identification (RFID) technology work by installing RFID
+                    readers at strategic points along the road, such as at toll
+                    plazas or parking entrances. RFID tags are then installed on
+                    vehicles, typically on the windshield or license plate.
+                  </span>
+                  <br />
+                  <span>
+                    As a vehicle passes an RFID reader, the reader sends a
+                    signal to the tag, which responds with a unique identifier.
+                    The reader then sends this information to a central
+                    database, where it can be used to track the vehicle's
+                    movement, calculate tolls, or manage parking.
+                  </span>
+                  <br />
+                  <span>
+                    RFID-based VDS has several advantages over other types of
+                    vehicle detection systems. For example, RFID tags can be
+                    read at high speeds, making them ideal for toll collection
+                    on highways. They are also very reliable and require minimal
+                    maintenance. In addition, RFID tags can be used for other
+                    purposes, such as access control, asset tracking, and
+                    inventory management.
+                  </span>
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-testimonials">
+          <div id="1" class="home-container11">
+            <div id="2" class="home-container12">
+              <div class="home-container13">
+                <h2 class="home-text15 HeadingOne">WHO WE ARE</h2>
+                <p class="home-text16 Lead">We are the Students of UIT!</p>
+                <p class="home-text17 Body">
+                  <span>
+                    "we are the final year students Working on Vehicle Detection
+                    System
+                  </span>
+                  <br />
+                  <span>
+                    &nbsp;and we belongs to Software Engineering faculty ."
+                  </span>
+                </p>
+                <p class="home-text21">Team Supervisor!</p>
+                <p class="home-text22">Dr. Sharaf Hussain</p>
+                <div class="home-container14">
+                  <img
+                    alt="image"
+                    src="static/css/photos/t-200h.jpeg"
+                    class="home-image4"
+                  />
+                  <div class="home-container15"></div>
+                  <a
+                    href="https://www.instagram.com/alisha_hameed9/?igshid=YjNmNGQ3MDY%3D"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="home-link"
+                  >
+                    <img
+                      alt="image"
+                      src="static/css/photos/a-200h.jpeg"
+                      class="home-image5"
+                    />
+                  </a>
+                  <div class="home-container16"></div>
+                  <a
+                    href="https://www.instagram.com/ommmi_omer/?igshid=YjNmNGQ3MDY%3D"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="home-link1"
+                  >
+                    <img
+                      alt="image"
+                      src="static/css/photos/o-200h.jpeg"
+                      class="home-image6"
+                    />
+                  </a>
+                  <div class="home-container17"></div>
+                  <a
+                    href="https://instagram.com/adnan_samad2?igshid=YjNmNGQ3MDY="
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="home-link2"
+                  >
+                    <img
+                      alt="image"
+                      src="static/css/photos/img_4945-200h.jpg"
+                      class="home-image7"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="home-logos"></div>
+          </div>
+          <img
+            alt="image"
+            src="static/css/photos/bottom.svg"
+            class="home-bottom-wave-image"
+          />
+          <img
+            alt="image"
+            src="static/css/photos/waves-white.svg"
+            class="home-image8"
+          />
+          <img
+            alt="image"
+            src="static/css/photos/top.svg"
+            class="home-top-wave-image"
+          />
+        </section>
+        <section class="home-contaier">
+          <div class="home-container18">
+            <div class="home-container19">
+              <svg viewBox="0 0 1024 1024" class="home-icon">
+                <path
+                  d="M363.722 722.052l41.298-57.816-45.254-45.256-57.818 41.296c-10.722-5.994-22.204-10.774-34.266-14.192l-11.682-70.084h-64l-11.68 70.086c-12.062 3.418-23.544 8.198-34.266 14.192l-57.818-41.298-45.256 45.256 41.298 57.816c-5.994 10.72-10.774 22.206-14.192 34.266l-70.086 11.682v64l70.086 11.682c3.418 12.060 8.198 23.544 14.192 34.266l-41.298 57.816 45.254 45.256 57.818-41.296c10.722 5.994 22.204 10.774 34.266 14.192l11.682 70.084h64l11.68-70.086c12.062-3.418 23.544-8.198 34.266-14.192l57.818 41.296 45.254-45.256-41.298-57.816c5.994-10.72 10.774-22.206 14.192-34.266l70.088-11.68v-64l-70.086-11.682c-3.418-12.060-8.198-23.544-14.192-34.266zM224 864c-35.348 0-64-28.654-64-64s28.652-64 64-64 64 28.654 64 64-28.652 64-64 64zM1024 384v-64l-67.382-12.25c-1.242-8.046-2.832-15.978-4.724-23.79l57.558-37.1-24.492-59.128-66.944 14.468c-4.214-6.91-8.726-13.62-13.492-20.13l39.006-56.342-45.256-45.254-56.342 39.006c-6.512-4.766-13.22-9.276-20.13-13.494l14.468-66.944-59.128-24.494-37.1 57.558c-7.812-1.892-15.744-3.482-23.79-4.724l-12.252-67.382h-64l-12.252 67.382c-8.046 1.242-15.976 2.832-23.79 4.724l-37.098-57.558-59.128 24.492 14.468 66.944c-6.91 4.216-13.62 8.728-20.13 13.494l-56.342-39.006-45.254 45.254 39.006 56.342c-4.766 6.51-9.278 13.22-13.494 20.13l-66.944-14.468-24.492 59.128 57.558 37.1c-1.892 7.812-3.482 15.742-4.724 23.79l-67.384 12.252v64l67.382 12.25c1.242 8.046 2.832 15.978 4.724 23.79l-57.558 37.1 24.492 59.128 66.944-14.468c4.216 6.91 8.728 13.618 13.494 20.13l-39.006 56.342 45.254 45.256 56.342-39.006c6.51 4.766 13.22 9.276 20.13 13.492l-14.468 66.944 59.128 24.492 37.102-57.558c7.81 1.892 15.742 3.482 23.788 4.724l12.252 67.384h64l12.252-67.382c8.044-1.242 15.976-2.832 23.79-4.724l37.1 57.558 59.128-24.492-14.468-66.944c6.91-4.216 13.62-8.726 20.13-13.492l56.342 39.006 45.256-45.256-39.006-56.342c4.766-6.512 9.276-13.22 13.492-20.13l66.944 14.468 24.492-59.13-57.558-37.1c1.892-7.812 3.482-15.742 4.724-23.79l67.382-12.25zM672 491.2c-76.878 0-139.2-62.322-139.2-139.2s62.32-139.2 139.2-139.2 139.2 62.322 139.2 139.2c0 76.878-62.32 139.2-139.2 139.2z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="home-text23 HeadingTwo">Beware The Components</h2>
+            <h3 class="home-text24 HeadingTwo">
+              <span class="home-text25">How To Use</span>
+              <br />
+            </h3>
+          </div>
+          <div class="home-container20">
+            <div class="home-container21">
+              <div class="home-container22"></div>
+              <div class="home-container23"></div>
+            </div>
+            <div class="home-container24">
+              <span>
+                <span>
+                  1. Install the necessary hardware: This includes sensors,
+                  cameras, or RFID readers, depending on the type of VDS being
+                  used. The hardware should be installed at strategic points
+                  along the road or in parking lots to detect and track
+                  vehicles.
+                </span>
+                <br />
+                <br />
+              </span>
+              <span>
+                <span>
+                  2.&nbsp;Connect the hardware to software: The hardware
+                  components of the VDS need to be connected to software that
+                  can process and analyze the data they collect. This may
+                  involve setting up a central database or cloud-based platform
+                  to store the data.
+                </span>
+                <br />
+                <br />
+              </span>
+              <span>
+                3.&nbsp;Configure the VDS: The VDS needs to be configured based
+                on the specific requirements of the application. For example, in
+                a toll collection system, the VDS needs to be configured to
+                calculate tolls based on the type and number of vehicles passing
+                through.
+              </span>
+            </div>
+          </div>
+          <div class="home-divider"></div>
+          <div class="home-container25">
+            <div class="home-container26">
+              <span>
+                <span>
+                  4.&nbsp;Monitor and analyze data: The VDS will continuously
+                  collect data on the presence and movement of vehicles. This
+                  data can be used to monitor traffic flow, parking
+                  availability, or toll revenue. The data can also be analyzed
+                  to identify patterns or trends that can be used to optimize
+                  transportation systems.
+                </span>
+                <br />
+                <br />
+              </span>
+              <span>
+                5. Make decisions based on data: The data collected by the VDS can
+                be used to make informed decisions about transportation systems.
+                For example, data on traffic patterns can be used to adjust
+                traffic signal timings or to plan for road expansions.
+              </span>
+            </div>
+            <div class="home-container27">
+              <div class="home-container28"></div>
+              <div class="home-container29"></div>
+            </div>
+          </div>
+        </section>
+        <footer class="footer-footer">
+          <div class="footer-container">
+            <div class="footer-container1">
+              <span>This project is created by UIT Students</span>
+            </div>
+            <div class="footer-container2">
+              <div class="footer-container3">
+                <span class="footer-text1 Large">TEAM MEMBERS</span>
+                <span class="footer-text2 Large">ADNAN SAMAD</span>
+                <span class="footer-text3">MUHAMMAD OMER SIDDIQUI</span>
+                <span class="footer-text4 Large">ALISHA HAMEED</span>
+                <span class="footer-text5 Large">HAFIZ TAHA SHARIF</span>
+              </div>
+            </div>
+          </div>
+          <img
+            alt="image"
+            src="static/css/photos/waves-white.svg"
+            class="footer-image"
+          />
+        </footer>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  </body>
+</html>
