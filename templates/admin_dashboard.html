@@ -82,15 +82,15 @@
                     <tbody>
                         {% for user in users %}
                         <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.is_admin }}</td>
+                            <td>{{ user['id'] }}</td>
+                            <td>{{ user['username'] }}</td>
+                            <td>{{ user['email'] }}</td>
+                            <td>{{ user['is_admin'] }}</td>
                             <td>
-                                <a href="{{ url_for('update', id=user.id) }}">Edit</a>
+                                <a href="{{ url_for('update', id=user['_id']) }}">Edit</a>
                                 </td>
                                 <td>
-                                <form action="{{ url_for('delete', id=user.id) }}" method="post">
+                            <form action="{{ url_for('delete', id=user['_id']) }}" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit">Delete</button>
                                 </form>

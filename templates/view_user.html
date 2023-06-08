@@ -80,15 +80,15 @@
             <th>RFID</th>
         </tr>
     </thead>
-    <tbody>
-      <tr>
-          <td>{{ registrations.name }} </td>
-          <td>{{ registrations.cnic }}</td>
-          <td>{{ registrations.engine_number }}</td>
-          <td>{{ registrations.number_plate }}</td>
-          <td>{{ registrations.rfid_tag }}</td>
-      </tr>
-  </tbody>
+      <tbody>
+        <tr>
+          <td>{{ registration['name'] }}</td>
+          <td>{{ registration['cnic'] }}</td>
+          <td>{{ registration['engine_number'] }}</td>
+          <td>{{ registration['number_plate'] }}</td>
+          <td>{{ registration['rfid_tag'] }}</td>
+        </tr>
+    </tbody>
     </table>
             </div>
             </div>
@@ -161,13 +161,6 @@ class="footer-image"
       </div>
     </a>
   </div>
-  <!-- <div data-role="BurgerMenu" class="header-burger-menu">
-    <svg viewBox="0 0 1024 1024" class="header-icon">
-      <path
-        d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"
-      ></path>
-    </svg>
-  </div> -->
 </div>
 </div>
 </nav>
@@ -185,17 +178,5 @@ class="footer-image"
 
 <!----------------------------------- OLD CODE OF DESIGN ------------------------------------------------>
 
-
-
-<!-- Old code of design -->
-<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"
-<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script> -->
-<!-- <a href="javascript:history.back()" class="back-button">Back</a> -->
-  <!-- <h1>User Information</h1>
-    <p><strong>Name:</strong> {{ registrations.name }}</p>
-    <p><strong>CNIC:</strong> {{ registrations.cnic }}</p>
-    <p><strong>Engine Number:</strong> {{ registrations.engine_number }}</p>
-    <p><strong>Number Plate:</strong> {{ registrations.number_plate }}</p>
-    <p><strong>RFID Tag:</strong> {{ registrations.rfid_tag }}</p> -->
   
   

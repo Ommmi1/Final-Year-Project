@@ -1,166 +1,106 @@
-<!-- old design of head  -->
-  <!-- search.html
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-    <a href="javascript:history.back()" class="back-button">Back</a>
-
-
-    <link rel="stylesheet" type="text/css" href="static/styles.css" media="screen"> -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Vehicle Location</title>
-    <meta
-      property="og:title"
-      content="Vehicle Location"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
+<head>
+  <title>Vehicle Location</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Open Sans;
-        font-size: 1rem;
-      }
-
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.625;
-        color: var(--dl-color-secondary-400);
-        background-color: var(--dl-color-gray-white);
-
-      }
-    </style>
-    <link
-      rel="shortcut icon"
-      href="static/css/photos/47324.png"
-      type="icon/png"
-      sizes="32x32"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
-      data-tag="font"
-    />
-    <style>
-      html * {
-          -webkit-font-smoothing: antialiased;
-      }
-      input::placeholder, textarea::placeholder {
-         color: #d2d6da;
-      }
-    </style>
-    <link rel="stylesheet" href="static/css/style.css" />
-
-  </head>
-<body>
-  <div class="register-container">
-    <div class="register-contact">
-  <div class="register-container2">
-    <div class="register-container3">
-        <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/again/style.css') }}"> -->
-      <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-      <!-- <a href="javascript:history.back()" class="back-button">Back</a> -->
-      
-        {% if locations %}
-        <body onload="initMap()">
-            <div class="search-vehicle-container3"></div>
-    </div>
-    <div class="search-vehicle-container4"></div>
-  </div>
-  <div class="register-container2">
-    <div class="register-container3">
-        <!-- <span class="search-vehicle-text03">Latitude</span>
-        {% for location in locations %}
-        <span class="search-vehicle-text04">{{ location.lat }}</span>
-        <span class="search-vehicle-text03">Longitude</span>
-        <span class="search-vehicle-text04">{{ location.lng }}</span>
-        <span class="search-vehicle-text03">Timestamp</span>
-        <span class="search-vehicle-text04">{{ location.timestamp }}</span>
-        {% endfor %} -->
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for location in locations %}
-                    <tr>
-                        <td>{{ location.lat }}</td>
-                        <td>{{ location.lng }}</td>
-                        <td>{{ location.timestamp }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-    </div>
-  </div>
-            <div class ="search-vehicle-container5">
-            <div id="map" style="height: 600px;"> </div>
-            <script>
-            // define the locations variable as a global variable
-            var locations = [];
+  <!-- Add your CSS stylesheets here -->
+  <link rel="stylesheet" href="static/css/style.css" />
+  
+  <!-- Load the Google Maps API with the callback parameter -->
+  
+  <script>
+    // define the locations variable as a global variable
+    var locations = [];
     
-            // populate the locations array with data from the server
-            "{% for location in locations %}"
-                locations.push({
-                    lat: "{{ location.lat }}",
-                    lng: "{{ location.lng }}",
-                    timestamp: "{{ location.timestamp }}"
-                });
-            "{% endfor %}"
-    
-            // create a map object
-            function initMap() {
-            // get latitude and longitude values from the database
-            var lat = parseFloat("{{ locations[0].lat }}");
-            var lng = parseFloat("{{ locations[0].lng }}");
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: lat, lng: lng },
-                zoom: 12
+    // populate the locations array with data from the server
+    "{% for loc in location %}"
+    locations.push({
+        lat: parseFloat("{{ loc['lat'] }}"),
+        lng: parseFloat("{{ loc['lng'] }}"),
+        timestamp: "{{ loc['timestamp'] }}"
       });
+    "{% endfor %}"
     
+    // create a map object
+    function initMap() {
+      // get latitude and longitude values from the first location
+      var lat = locations[0].lat;
+      var lng = locations[0].lng;
+      var map = document.getElementById('map'); // Ensure the correct element ID is used
+    
+        var map = new google.maps.Map(map, {
+          center: { lat: lat, lng: lng },
+          zoom: 12
+        });
+      
+      // create the map using the provided mapDiv element
+      // var map = new google.maps.Map(document.getElementById('map'), {
+      //   center: { lat: lat, lng: lng },
+      //   zoom: 12
+      // });
+      
       // loop through locations and add markers to the map
       for (var i = 0; i < locations.length; i++) {
         var location = locations[i];
         var latLng = new google.maps.LatLng(location.lat, location.lng);
         var marker = new google.maps.Marker({
-          position: latLng ,
+          position: latLng,
           map: map,
-          title: '{{ locations.number_plate }}'
+          title: location.timestamp
         });
       }
     }
-    
-            </script>
-        {% else %}
-        
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcZREyA3Z0ALYAaciq1043Fya3-2dSL1E&callback=initMap"></script>
+
+</head>
+<body>
+  <body onload="initMap()"></body>
+  <div id="map" style="height: 600px;"></div>
+  <div class="register-container">
+    <div class="register-contact">
+      <div class="register-container2">
+        <div class="register-container3">
+          <div class="search-vehicle-container3"></div>
+          <div class="search-vehicle-container4"></div>
+        </div>
+        <div class="register-container2">
+          <div class="register-container3">
+            {% if location %}
+            <table>
+              <thead>
+                <tr>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for loc in location %}
+                <tr>
+                  <td>{{ loc['lat'] }}</td>
+                  <td>{{ loc['lng'] }}</td>
+                  <td>{{ loc['timestamp'] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
             <p>No locations found for this vehicle.</p>
-        {% endif %}
-    
-        <!-- <button onclick="location.href='/search'">Search Vehicle</button> -->
-    
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcZREyA3Z0ALYAaciq1043Fya3-2dSL1E"></script>
-    </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="search-vehicle-container5">
+          <div id="map" style="height: 600px;"></div>
+        </div>
+      </div>
     </div>
   </div>
-    </body>
+</body>
+</html>
+
 
 
 
@@ -213,6 +153,8 @@
       <a class="header-navlink1 Large" href="/search">Search Vehicle </a>
       <a class="header-navlink1 Large" href="/all_vehicles">Vehicle List </a>
       <a class="header-navlink1 Large" href="/vehicle_location">Vehicle Location </a>
+      <a class="header-navlink1 Large" href="/create_officer">Create Officer </a>
+
     </div>
     <div class="header-container1">
       <div class="header-container2">
@@ -226,13 +168,6 @@
           </div>
         </a>
       </div>
-      <!-- <div data-role="BurgerMenu" class="header-burger-menu">
-        <svg viewBox="0 0 1024 1024" class="header-icon">
-          <path
-            d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"
-          ></path>
-        </svg>
-      </div> -->
     </div>
   </div>
   </nav>

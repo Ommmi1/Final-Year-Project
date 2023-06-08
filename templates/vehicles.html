@@ -81,11 +81,11 @@
                 <tbody>
                     {% for vehicle in vehicles %}
                     <tr>
-                        <td>{{ vehicle.name }}</td>
-                        <td>{{ vehicle.cnic }}</td>
-                        <td>{{ vehicle.engine_number }}</td>
-                        <td>{{ vehicle.number_plate }}</td>
-                        <td>{{ vehicle.rfid_tag }}</td>
+                      <td>{{ vehicle['name'] }}</td>
+                      <td>{{ vehicle['cnic'] }}</td>
+                      <td>{{ vehicle['engine_number'] }}</td>
+                      <td>{{ vehicle['number_plate'] }}</td>
+                      <td>{{ vehicle['rfid_tag'] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

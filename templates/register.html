@@ -79,7 +79,7 @@
                 />
                 <label class="register-text2 Label">CNIC</label>
                 <input
-                  type="number"
+                  type="text"
                   required=""
                   placeholder="Enter CNIC"
                   id="cnic"
@@ -88,7 +88,7 @@
                 />
                 <label class="register-text3 Label">Engine Number</label>
                 <input
-                  type="taxt"
+                  type="text"
                   required=""
                   placeholder="Enter Engine Number"
                   id="engine_number"
@@ -141,11 +141,11 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ registrations.name }}</td>
-                <td>{{ registrations.cnic }}</td>
-                <td>{{ registrations.engine_number }}</td>
-                <td>{{ registrations.number_plate }}</td>
-                <td>{{ registrations.rfid_tag }}</td>
+                <td>{{ registrations['name'] }}</td>
+                <td>{{ registrations['cnic'] }}</td>
+                <td>{{ registrations['engine_number'] }}</td>
+                <td>{{ registrations['number_plate'] }}</td>
+                <td>{{ registrations['rfid_tag'] }}</td>
             </tr>
         </tbody>
     </table>

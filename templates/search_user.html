@@ -74,7 +74,7 @@
               <form class="register-form1" id="search-form" method="POST" action="{{ url_for('search_user') }}">
                 <label class="register-text1 Label">CNIC</label>
                 <input
-                  type="number"
+                  type="text"
                   required=""
                   placeholder="Enter CNIC"
                   id="cnic"
@@ -97,7 +97,7 @@
               </form>
 
 
-              {% if registrations %}
+              {% if registration %}
               <table id="data-table">
                 <thead>
                     <tr>
@@ -110,16 +110,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ registrations.name }}</td>
-                        <td>{{ registrations.cnic }}</td>
-                        <td>{{ registrations.engine_number }}</td>
-                        <td>{{ registrations.number_plate }}</td>
-                        <td>{{ registrations.rfid_tag }}</td>
+                      <td>{{ registration['name'] }}</td>
+                      <td>{{ registration['cnic'] }}</td>
+                      <td>{{ registration['engine_number'] }}</td>
+                      <td>{{ registration['number_plate'] }}</td>
+                      <td>{{ registration['rfid_tag'] }}</td>
                     </tr>
                 </tbody>
             </table>
             {% elif error %}
-            {% endif %}
+<p>{{ error }}</p>
+{% endif %}
 
     </div>
     <div class="register-info">
@@ -179,6 +180,7 @@
           <a class="header-navlink1 Large" href="/search">Search Vehicle </a>
           <a class="header-navlink1 Large" href="/all_vehicles">Vehicle List </a>
           <a class="header-navlink1 Large" href="/vehicle_location">Vehicle Location </a>
+          <a class="header-navlink1 Large" href="/create_officer">Create Officer </a>
         </div>
         <div class="header-container1">
           <div class="header-container2">

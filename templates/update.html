@@ -75,7 +75,7 @@
                   type="text"
                   required=""
                   placeholder="Enter Username"
-                  value="{{ user.username }}"
+                  value="{{ user['username'] }}"
                   name="username"
                   class="sign-in-textinput Small input"
                 />
@@ -84,22 +84,20 @@
                   type="password"
                   required=""
                   placeholder=" Enter Password"
-                  value="{{ user.password }}"
+                  value="{{ user['password'] }}"
                   name="password"
                   class="sign-in-textinput1 Small input"
                 />
                 <label class="sign-in-text2 Label">Email</label>
                 <input
                   type="email"
-                  required=""
                   placeholder=" Enter Email"
                   id="email"
-                  value="{{ user.email }}"
+                  value="{{ user['email'] }}"
                   name="email"
                   class="sign-in-textinput1 Small input"
                 />
                 <input type="checkbox" name="is_admin" {% if user.is_admin %}checked{% endif %}
-                  required=""
                   class="sign-in-textinput1 Small input"
                   >
                   <div class="register-container2">
