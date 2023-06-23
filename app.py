@@ -427,8 +427,8 @@ def user_main():
 @app.route('/data/', methods=['POST'])
 def receive_data():
     uid = request.form.get('uid')
-    lat = request.form.get('&lat')
-    lng = request.form.get('&lng')
+    lat = request.form.get('lat')
+    lng = request.form.get('lng')
     print("UID:", uid)
     print("Latitude:", lat)
     print("Longitude:", lng)
