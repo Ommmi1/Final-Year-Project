@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excise Search</title>
+    <a href="/api">Home</a>
+</head>
+<body>
+    <h1>Excise Search</h1>
+    <p>Enter the vehicle number plate:</p>
+    <form method="post" action="/api/excisesearch">
+        <input type="text" name="number_plate">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if result %}
+        <h2>Vehicle Information:</h2>
+        <ul>
+            <li>Serial Number: {{ result.SERIAL_NO }}</li>
+            <li>Number Plate: {{ result.NUMBER_PLATE }}</li>
+            <li>Make: {{ result.MAKE }}</li>
+            <li>Registration Date: {{ result.REG_DATE }}</li>
+            <li>Tax Payment Date: {{ result.TAX_PAYMENT }}</li>
+            <li>Engine Number: {{ result.ENGINE_NO }}</li>
+            <li>Vehicle Model: {{ result.VEHICLE_MODEL }}</li>
+            <li>Body Type: {{ result.BODY_TYPE }}</li>
+            <li>Owner Name: {{ result.OWNER_NAME }}</li>
+            <li>Model Year: {{ result.MODEL_YEAR }}</li>
+            <li>Seating Capacity: {{ result.SEATING_CAPACITY }}</li>
+            <li>CPLC: {{ result.CPLC }}</li>
+            <li>Safe Custody: {{ result.SAFE_CUSTODY }}</li>
+            <li>Horse Power: {{ result.HORSE_POWER }}</li>
+            <li>Class of Vehicle: {{ result.CLASS_OF_VEHICLE }}</li>
+        </ul>
+    {% endif %}
+</body>
+</html>
