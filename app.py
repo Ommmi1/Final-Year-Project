@@ -12,6 +12,7 @@ from flask_login import LoginManager
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from passlib.hash import bcrypt
+import requests
 from werkzeug.security import generate_password_hash,check_password_hash
 # from pymongo import MongoClient
 
@@ -61,7 +62,7 @@ app.secret_key = '13565f86f10f02e43ee54f23cbfe77cb'
 app.static_folder = 'static'
 app.static_url_path = '/static'
 
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/vehicle_tracking'
+app.config['MONGO_URI'] = 'mongodb+srv://omersidd93:Omer1234@cluster0.vvhwsll.mongodb.net/'
 mongo = MongoClient(app.config['MONGO_URI'])
 db = mongo.get_database('vehicle_tracking')
 users = db['users']
@@ -452,6 +453,61 @@ def receive_data():
     
 
 
+@app.route('/exciseandcplc', methods=['POST', 'GET'])
+def exciseandcplc():
+    if request.method == 'POST':
+        number_plate = request.form.get('number_plate')
+        vehicle_info = search_vehicle_info(number_plate)
+
+        if vehicle_info:
+            message = "Vehicle information:"
+        else:
+            message = "Vehicle not found"
+            # Process and display the vehicle_info dictionary as needed
+
+        return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+
+    return render_template('search_form.html')  # Display the search form for GET requests
+
+
+
+
+
+def search_vehicle_info(number_plate):
+    # API endpoint URL
+    url = "https://excise-api-af71673bb6f6.herokuapp.com/"
+
+    # JSON payload containing the number_plate
+    payload = {"number_plate": number_plate}
+
+    try:
+        # Make the POST request with JSON data
+        response = requests.post(url, json=payload)
+        response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
+
+        try:
+            # Attempt to parse the JSON data from the response
+            response_data = response.json()
+        except ValueError:
+            # Failed to parse JSON, return None indicating an error
+            print("Invalid JSON data received from the API.")
+            return None
+
+        # Check if the response contains vehicle information or an error message
+        if "error" in response_data:
+            # Vehicle not found
+            return None
+        else:
+            # Vehicle information found
+            return response_data
+
+    except requests.exceptions.RequestException as e:
+        # Handle any exceptions that occurred during the request
+        print(f"An error occurred: {e}")
+        return None
+
+
+
 
 
 
@@ -459,8 +515,8 @@ def receive_data():
 if __name__ == '__main__':
     # db.create_all()
     # app.run(debug=True)
-    # app.run(debug=True, host='192.168.43.202',port=5000)
-    app.run(debug=True)
+    app.run()
+    # app.run(debug=True)
 
 
 
