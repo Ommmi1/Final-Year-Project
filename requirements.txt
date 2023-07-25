@@ -19,11 +19,13 @@ Flask-PyMongo==2.3.0
 Flask-SQLAlchemy==3.0.3
 Flask-WTF @ git+https://github.com/wtforms/flask-wtf.git@1d62d3af02414161e24c56c7ba287c39b0f53c07
 greenlet==2.0.2
+gunicorn==21.2.0
 idna==3.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
 Mako==1.2.4
 MarkupSafe==2.1.2
+packaging==23.1
 passlib==1.7.4
 platformdirs==3.2.0
 PyJWT==1.4.2
