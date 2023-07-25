@@ -476,6 +476,7 @@ def exciseandcplc():
 def search_vehicle_info(number_plate):
     # API endpoint URL
     url = "web-production-39b9.up.railway.app"
+    
 
     # JSON payload containing the number_plate
     payload = {"number_plate": number_plate}
