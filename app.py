@@ -191,7 +191,7 @@ def create_admin():
 
     users.insert_one(admin_user)
     print("Admin user created successfully")
-# create_admin()
+create_admin()
 
 
 
