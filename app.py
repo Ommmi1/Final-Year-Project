@@ -453,7 +453,7 @@ def receive_data():
     
 
 
-@app.route('/exciseandcplc', methods=['POST', 'GET'])
+@app.route('/exciseandcplc', methods=['POST'])
 def exciseandcplc():
     if request.method == 'POST':
         number_plate = request.form.get('number_plate')
@@ -479,7 +479,7 @@ def search_vehicle_info(number_plate):
 
 
     # JSON payload containing the number_plate
-    payload = {"number_plate": number_plate}
+    payload = {"NUMBER_PLATE": number_plate}
 
     try:
         # Make the POST request with JSON data
