@@ -475,7 +475,7 @@ def exciseandcplc():
 
 def search_vehicle_info(number_plate):
     # API endpoint URL
-    url = "https://excise-api-af71673bb6f6.herokuapp.com/"
+    url = "web-production-39b9.up.railway.app"
 
     # JSON payload containing the number_plate
     payload = {"number_plate": number_plate}
