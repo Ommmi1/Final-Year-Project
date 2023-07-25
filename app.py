@@ -453,10 +453,10 @@ def receive_data():
     
 
 
-@app.route('/exciseandcplc', methods=['POST'])
+@app.route('/exciseandcplc', methods=['POST','GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        number_plate = request.form.get('number_plate')
+        number_plate = request.form.get('NUMBER_PLATE')
         vehicle_info = search_vehicle_info(number_plate)
 
         if vehicle_info:
