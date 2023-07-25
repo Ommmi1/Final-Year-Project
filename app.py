@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect ,url_for,abort
+from flask import Flask, request, render_template, redirect ,url_for,abort,request
 from datetime import datetime
 import pytz
 from flask import render_template, flash
@@ -456,7 +456,8 @@ def receive_data():
 @app.route('/exciseandcplc', methods=['POST','GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        number_plate = request.form.get('NUMBER_PLATE')
+        data = request.json  # Use request.json to access the JSON payload
+        number_plate = data.get('NUMBER_PLATE')
         vehicle_info = search_vehicle_info(number_plate)
 
         if vehicle_info:
