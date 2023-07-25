@@ -35,7 +35,7 @@
 
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
-
+from bson import ObjectId
 app = Flask(__name__)
 app.secret_key = 'mysecretkey'
 
@@ -59,7 +59,10 @@ def excisesearch():
             return jsonify({"error": "Number plate not provided"}), 400
 
         result = collection.find_one({"NUMBER_PLATE": number_plate})
+
         if result:
+            # Convert ObjectId to string before jsonify
+            result['_id'] = str(result['_id'])
             return jsonify(result)
         else:
             return jsonify({"error": "Vehicle not found"}), 404
