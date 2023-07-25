@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect ,url_for,abort,request
+from flask import Flask, request, render_template, redirect ,url_for,abort,jsonify
 from datetime import datetime
 import pytz
 from flask import render_template, flash
@@ -13,6 +13,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from passlib.hash import bcrypt
 import requests
+import json
 from werkzeug.security import generate_password_hash,check_password_hash
 # from pymongo import MongoClient
 
@@ -453,11 +454,11 @@ def receive_data():
     
 
 
-@app.route('/exciseandcplc', methods=['POST','GET'])
+@app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
         data = request.json  # Use request.json to access the JSON payload
-        number_plate = data.get('NUMBER_PLATE')
+        number_plate = data.get('number_plate')
         vehicle_info = search_vehicle_info(number_plate)
 
         if vehicle_info:
@@ -478,13 +479,12 @@ def search_vehicle_info(number_plate):
     # API endpoint URL
     url = "https://web-production-39b9.up.railway.app/api/excisesearch"
 
-
     # JSON payload containing the number_plate
-    payload = {"NUMBER_PLATE": number_plate}
+    payload = {"number_plate": number_plate}  # Ensure 'number_plate' key matches the API's expected key
 
     try:
-        # Make the POST request with JSON data
-        response = requests.post(url, json=payload)
+        # Make the POST request with JSON data and set the 'Content-Type' header to 'application/json'
+        response = requests.post(url, data=json.dumps(payload), headers={"Content-Type": "application/json"})
         response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
 
         try:
@@ -507,6 +507,7 @@ def search_vehicle_info(number_plate):
         # Handle any exceptions that occurred during the request
         print(f"An error occurred: {e}")
         return None
+
 
 
 
