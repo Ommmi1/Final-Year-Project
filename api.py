@@ -127,12 +127,12 @@ collection = db["VehicleOwnerInfo"]
 @app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        number_plate = request.form('NUMBER_PLATE')
+        number_plate = request.form['NUMBER_PLATE']  # Use square brackets to access form data
         vehicle_info = collection.find_one({"NUMBER_PLATE": number_plate})
+        
         if vehicle_info:
             vehicle_info.pop('_id', None)
             message = "Vehicle information:"
-            return vehicle_info
         else:
             message = "Vehicle not found"
             # Process and display the vehicle_info dictionary as needed
