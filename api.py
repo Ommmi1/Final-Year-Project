@@ -131,7 +131,7 @@ def exciseandcplc():
         vehicle_info = collection.find_one({"NUMBER_PLATE": number_plate})
         
         if vehicle_info:
-            vehicle_info.pop('_id', None)
+            # vehicle_info.pop('_id', None)
             message = "Vehicle information:"
         else:
             message = "Vehicle not found"
