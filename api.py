@@ -139,7 +139,7 @@ def exciseandcplc():
             message = "Vehicle not found"
             # Process and display the vehicle_info dictionary as needed
 
-        return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+        # return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
 
     return render_template('search_form.html')
 
