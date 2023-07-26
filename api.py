@@ -33,7 +33,9 @@
 
 
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
+import requests
+import json
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 app = Flask(__name__)
@@ -49,10 +51,13 @@ collection = db["VehicleOwnerInfo"]
 # db = mongo_client["vehicle_info"]  # Replace "your_database_name" with the actual name of your MongoDB database
 # collection = db["VehicleOwnerInfo"]
 
-@app.route('/api/excisesearch', methods=['GET','POST'])
+@app.route('/api/excisesearch', methods=['POST'])
 def excisesearch():
+    # Get the JSON data from the POST request
     data = request.json
-    number_plate = data.get('NUMBER_PLATE')
+
+    # Extract the number_plate from the JSON data
+    number_plate = data.get('number_plate')
 
     if not number_plate:
         return jsonify({"error": "Number plate not provided"}), 400
@@ -71,6 +76,55 @@ def excisesearch():
 def cplcsearch():
     return jsonify({"message": "CPLC Search endpoint"})
 
+@app.route('/exciseandcplc', methods=['POST', 'GET'])
+def exciseandcplc():
+    if request.method == 'POST':
+        data = request.json
+        number_plate = data.get('NUMBER_PLATE')
+        vehicle_info = search_vehicle_info(number_plate)
+
+        if vehicle_info:
+            message = "Vehicle information:"
+        else:
+            message = "Vehicle not found"
+            # Process and display the vehicle_info dictionary as needed
+
+        return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+
+    return render_template('search_form.html')  # Display the search form for GET requests
+
+def search_vehicle_info(number_plate):
+    # API endpoint URL
+    url = "https://web-production-39b9.up.railway.app/api/excisesearch"
+    headers = {"Content-Type": "application/json"}
+    # JSON payload containing the number_plate
+    payload = {"NUMBER_PLATE": number_plate}  # Ensure 'number_plate' key matches the API's expected key
+
+    try:
+        # Make the POST request with JSON data and set the 'Content-Type' header to 'application/json'
+        response = requests.post(url, data=json.dumps(payload), headers=headers)
+        response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
+
+        try:
+            # Attempt to parse the JSON data from the response
+            response_data = response.json()
+        except ValueError:
+            # Failed to parse JSON, return None indicating an error
+            print("Invalid JSON data received from the API.")
+            return None
+
+        # Check if the response contains vehicle information or an error message
+        if "error" in response_data:
+            # Vehicle not found
+            return None
+        else:
+            # Vehicle information found
+            return response_data
+
+    except requests.exceptions.RequestException as e:
+        # Handle any exceptions that occurred during the request
+        print(f"An error occurred: {e}")
+        return None
+
 if __name__ == '__main__':
     app.run(debug=True)
-
