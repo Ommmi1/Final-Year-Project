@@ -133,6 +133,8 @@ def exciseandcplc():
         if vehicle_info:
             # vehicle_info.pop('_id', None)
             message = "Vehicle information:"
+            return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+
         else:
             message = "Vehicle not found"
             # Process and display the vehicle_info dictionary as needed
@@ -153,4 +155,4 @@ def exciseandcplc():
 #     else:
 #         return None
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
