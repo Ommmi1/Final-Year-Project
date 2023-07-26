@@ -127,7 +127,7 @@ collection = db["VehicleOwnerInfo"]
 @app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        number_plate = request.form.get('NUMBER_PLATE')
+        number_plate = request.form.get('number_plate')
         vehicle_info = get_vehicle_info(number_plate)
 
         if vehicle_info:
