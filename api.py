@@ -51,21 +51,21 @@ collection = db["VehicleOwnerInfo"]
 
 @app.route('/api/excisesearch', methods=['POST'])
 def excisesearch():
-    if request.method == 'POST':
-        data = request.json
-        number_plate = data.get('number_plate')
+    data = request.json
+    number_plate = data.get('number_plate')
 
-        if not number_plate:
-            return jsonify({"error": "Number plate not provided"}), 400
+    if not number_plate:
+        return jsonify({"error": "Number plate not provided"}), 400
 
-        result = collection.find_one({"NUMBER_PLATE": number_plate})
+    # Search the MongoDB collection for the matching number plate
+    result = collection.find_one({"NUMBER_PLATE": number_plate})
 
-        if result:
-            # Convert ObjectId to string before jsonify
-            result['_id'] = str(result['_id'])
-            return jsonify(result)
-        else:
-            return jsonify({"error": "Vehicle not found"}), 404
+    if result:
+        # Remove the MongoDB _id field from the result
+        result.pop('_id', None)
+        return jsonify(result)
+    else:
+        return jsonify({"error": "Vehicle not found"}), 404
 
 @app.route('/api/cplcsearch', methods=['GET'])
 def cplcsearch():
