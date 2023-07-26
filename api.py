@@ -130,7 +130,9 @@ def exciseandcplc():
         number_plate = request.form('NUMBER_PLATE')
         vehicle_info = collection.find_one({"NUMBER_PLATE": number_plate})
         if vehicle_info:
+            vehicle_info.pop('_id', None)
             message = "Vehicle information:"
+            return vehicle_info
         else:
             message = "Vehicle not found"
             # Process and display the vehicle_info dictionary as needed
@@ -140,15 +142,15 @@ def exciseandcplc():
     return render_template('search_form.html')
 
 
-def get_vehicle_info(number_plate):
-    # Search the MongoDB collection for the matching number plate
-    result = collection.find_one({"NUMBER_PLATE": number_plate})
+# def get_vehicle_info(number_plate):
+#     # Search the MongoDB collection for the matching number plate
+#     result = collection.find_one({"NUMBER_PLATE": number_plate})
 
-    if result:
-        # Remove the MongoDB _id field from the result
-        result.pop('_id', None)
-        return result
-    else:
-        return None
+#     if result:
+#         # Remove the MongoDB _id field from the result
+#         result.pop('_id', None)
+#         return result
+#     else:
+#         return None
 if __name__ == '__main__':
     app.run(debug=True)
