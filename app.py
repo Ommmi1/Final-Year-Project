@@ -457,9 +457,8 @@ def receive_data():
 @app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        data = request.json  # Use request.json to access the JSON payload
-        number_plate = data.get('number_plate')
-        vehicle_info = search_vehicle_info(number_plate)
+        number_plate = request.form.get('NUMBER_PLATE')
+        vehicle_info = get_vehicle_info(number_plate)
 
         if vehicle_info:
             message = "Vehicle information:"
@@ -469,22 +468,22 @@ def exciseandcplc():
 
         return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
 
-    return render_template('search_form.html')  # Display the search form for GET requests
+    return render_template('search_form.html')
 
 
 
 
 
-def search_vehicle_info(number_plate):
+def get_vehicle_info(number_plate):
     # API endpoint URL
     url = "https://web-production-39b9.up.railway.app/api/excisesearch"
     headers = {"Content-Type": "application/json"}
     # JSON payload containing the number_plate
-    payload = {"number_plate": number_plate}  # Ensure 'number_plate' key matches the API's expected key
+    payload = {"NUMBER_PLATE": number_plate}  # Ensure 'number_plate' key matches the API's expected key
 
     try:
         # Make the POST request with JSON data and set the 'Content-Type' header to 'application/json'
-        response = requests.post(url, data=json.dumps(payload), headers=headers)
+        response = requests.post(url, json=payload, headers=headers)
         response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
 
         try:
@@ -507,7 +506,6 @@ def search_vehicle_info(number_plate):
         # Handle any exceptions that occurred during the request
         print(f"An error occurred: {e}")
         return None
-
 
 
 
