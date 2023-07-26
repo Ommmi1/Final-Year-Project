@@ -49,7 +49,7 @@ collection = db["VehicleOwnerInfo"]
 # db = mongo_client["vehicle_info"]  # Replace "your_database_name" with the actual name of your MongoDB database
 # collection = db["VehicleOwnerInfo"]
 
-@app.route('/api/excisesearch', methods=['GET'])
+@app.route('/api/excisesearch', methods=['GET','POST'])
 def excisesearch():
     data = request.json
     number_plate = data.get('number_plate')
