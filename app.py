@@ -191,7 +191,7 @@ def create_admin():
 
     users.insert_one(admin_user)
     print("Admin user created successfully")
-create_admin()
+# create_admin()
 
 
 
@@ -478,13 +478,13 @@ def exciseandcplc():
 def search_vehicle_info(number_plate):
     # API endpoint URL
     url = "https://web-production-39b9.up.railway.app/api/excisesearch"
-
+    headers = {"Content-Type": "application/json"}
     # JSON payload containing the number_plate
     payload = {"number_plate": number_plate}  # Ensure 'number_plate' key matches the API's expected key
 
     try:
         # Make the POST request with JSON data and set the 'Content-Type' header to 'application/json'
-        response = requests.post(url, data=json.dumps(payload), headers={"Content-Type": "application/json"})
+        response = requests.post(url, data=json.dumps(payload), headers=headers)
         response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
 
         try:
