@@ -52,7 +52,7 @@ collection = db["VehicleOwnerInfo"]
 @app.route('/api/excisesearch', methods=['GET','POST'])
 def excisesearch():
     data = request.json
-    number_plate = data.get('number_plate')
+    number_plate = data.get('NUMBER_PLATE')
 
     if not number_plate:
         return jsonify({"error": "Number plate not provided"}), 400
