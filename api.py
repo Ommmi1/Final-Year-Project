@@ -160,7 +160,11 @@ def exciseandcplc():
             # Process and display the vehicle_info dictionary as needed
 
         return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
-
+    else:
+        vehicle_info = collection.find_one({"NUMBER_PLATE": number_plate})
+        if vehicle_info:
+            message = "Vehicle information:"
+            return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
     return render_template('search_form.html')
 
 # -----------------------------------------------------------------------------------------------------
