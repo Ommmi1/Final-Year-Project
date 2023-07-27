@@ -34,7 +34,6 @@
 
 
 from flask import Flask, request, jsonify, render_template
-import requests
 import json
 from pymongo import MongoClient
 app = Flask(__name__)
@@ -124,6 +123,27 @@ collection = db["VehicleOwnerInfo"]
 #         # Handle any exceptions that occurred during the request
 #         print(f"An error occurred: {e}")
 #         return None
+# @app.route('/exciseandcplc', methods=['POST', 'GET'])
+# def exciseandcplc():
+#     if request.method == 'POST':
+#         number_plate = request.form['number_plate']  # Use square brackets to access form data
+#         vehicle_info = collection.find_one({"NUMBER_PLATE": number_plate})
+        
+#         if vehicle_info:
+#             # vehicle_info.pop('_id', None)
+#             message = "Vehicle information:"
+#             return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+
+#         else:
+#             message = "Vehicle not found"
+#             # Process and display the vehicle_info dictionary as needed
+
+#         # return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+
+#     return render_template('search_form.html')
+
+# --------------------------------------------------------------------------------------------------
+
 @app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
@@ -139,11 +159,35 @@ def exciseandcplc():
             message = "Vehicle not found"
             # Process and display the vehicle_info dictionary as needed
 
-        # return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+        return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
 
     return render_template('search_form.html')
 
+# -----------------------------------------------------------------------------------------------------
 
+@app.route('/cplc', methods=['POST', 'GET'])
+def cplc():
+    if request.method == 'POST':
+        number_plate = request.form['number_plate']  # Use square brackets to access form data
+        vehicle_info = collection.find_one({"NUMBER_PLATE": number_plate})
+        
+        if vehicle_info:
+            # vehicle_info.pop('_id', None)
+            message = "Vehicle information:"
+            return render_template('cplcresult.html', message=message, vehicle_info=vehicle_info)
+
+        else:
+            message = "Vehicle not found"
+            # Process and display the vehicle_info dictionary as needed
+
+        return render_template('cplcresult.html', message=message, vehicle_info=vehicle_info)
+
+    return render_template('search_form2.html')
+
+# -----------------------------------------------------------------------------------------------------
+@app.route('/')
+def index():
+    return render_template('home.html')
 # def get_vehicle_info(number_plate):
 #     # Search the MongoDB collection for the matching number plate
 #     result = collection.find_one({"NUMBER_PLATE": number_plate})
@@ -155,4 +199,4 @@ def exciseandcplc():
 #     else:
 #         return None
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

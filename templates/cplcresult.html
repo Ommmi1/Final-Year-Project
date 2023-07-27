@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <p>{{ message }}</p>
+
+    {% if vehicle_info %}
+        <table>
+            <tr>
+                <th>CPLC</th>
+                <!-- Add other columns here for the rest of the vehicle information -->
+            </tr>
+            <tr>
+                <td>{{ vehicle_info['CPLC'] }}</td>
+                <!-- Add other columns here for the rest of the vehicle information -->
+            </tr>
+        </table>
+    {% endif %}
+</body>
+</html>
