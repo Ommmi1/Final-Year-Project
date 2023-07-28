@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Information for CPLC</title>
+    <a href="/">Home</a>
+</head>
+<body>
+    <h1>Vehicle Information</h1>
+    
+    <div id="result-container">
+        {% if vehicle_info %}
+        <p id="message">Vehicle information:</p>
+            <table id="vehicle-info">
+                <tr>
+                    <th>CPLC</th>
+                </tr>
+                <tr>
+                    <td>{{ vehicle_info.CPLC }}</td>
+                </tr>
+            </table>
+            
+        {% else %}
+            <p id="message">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search Results</title>
+    <title>Vehicle Information</title>
+    <a href="/">Home</a>
 </head>
 <body>
-    <h1>Search Results</h1>
-    <p>{{ message }}</p>
-
-    {% if vehicle_info %}
-        <table>
-            <tr>
-                <th>Serial Number</th>
-                <th>Number Plate</th>
-                <th>Make</th>
-                <th>Registration Date</th>
-                <th>Tax Payment Date: </th>
-                <th>Engine Number</th>
-                <th>Vehicle Model</th>
-                <th>Body Type</th>
-                <th>Owner Name</th>
-                <th>Model Year</th>
-                <th>Seating Capacity</th>
-                <th>CPLC  </th>
-                <th>Safe Custody</th>
-                <th>Horse Power</th>
-                <th>Class of Vehicle</th>
-                <!-- Add other columns here for the rest of the vehicle information -->
-            </tr>
-            <tr>
-                <td>{{ vehicle_info[SERIAL_NO] }}</td>
-                <td>{{ vehicle_info[NUMBER_PLATE] }}</td>
-                <td>{{ vehicle_info[MAKE] }}</td>
-                <td>{{ vehicle_info[REG_DATE] }}</td>
-              <td>  {{ vehicle_info[TAX_PAYMENT] }}</td>
-              <td>  {{ vehicle_info[ENGINE_NO] }}</td>
-              <td>  {{ vehicle_info[VEHICLE_MODEL] }}</td>
-               <td> {{ vehicle_info[BODY_TYPE] }}</td>
-               <td> {{ vehicle_info[OWNER_NAME] }}</td>
-               <td> {{ vehicle_info[MODEL_YEAR] }}</td>
-               <td> {{ vehicle_info[SEATING_CAPACITY] }}</td>
-               <td> {{ vehicle_info[CPLC] }}</td>
-               <td> {{ vehicle_info[SAFE_CUSTODY] }}</td>
-               <td> {{ vehicle_info[HORSE_POWER] }}</td>
-               <td> {{ vehicle_info[CLASS_OF_VEHIVLE] }}</td>
-                <!-- Add other columns here for the rest of the vehicle information -->
-            </tr>
-        </table>
-    {% endif %}
+    <h1>Vehicle Information</h1>
+    
+    <div id="result-container">
+        {% if vehicle_info %}
+        <p id="message">Vehicle information:</p>
+            <table id="vehicle-info">
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Number Plate</th>
+                    <th>Make</th>
+                    <th>Registration Date</th>
+                    <th>Tax Payment Date</th>
+                    <th>Engine Number</th>
+                    <th>Vehicle Model</th>
+                    <th>Body Type</th>
+                    <th>Owner Name</th>
+                    <th>Model Year</th>
+                    <th>Seating Capacity</th>
+                    <th>CPLC</th>
+                    <th>Safe Custody</th>
+                    <th>Horse Power</th>
+                    <th>Class of Vehicle</th>
+                </tr>
+                <tr>
+                    <td>{{ vehicle_info.SERIAL_NO }}</td>
+                    <td>{{ vehicle_info.NUMBER_PLATE }}</td>
+                    <td>{{ vehicle_info.MAKE }}</td>
+                    <td>{{ vehicle_info.REG_DATE }}</td>
+                    <td>{{ vehicle_info.TAX_PAYMENT }}</td>
+                    <td>{{ vehicle_info.ENGINE_NO }}</td>
+                    <td>{{ vehicle_info.VEHICLE_MODEL}}</td>
+                    <td>{{ vehicle_info.BODY_TYPE }}</td>
+                    <td>{{ vehicle_info.OWNER_NAME }}</td>
+                    <td>{{ vehicle_info.MODEL_YEAR }}</td>
+                    <td>{{ vehicle_info.SEATING_CAPACITY }}</td>
+                    <td>{{ vehicle_info.CPLC }}</td>
+                    <td>{{ vehicle_info.SAFE_CUSTODY }}</td>
+                    <td>{{ vehicle_info.HORSE_POWER }}</td>
+                    <td>{{ vehicle_info.CLASS_OF_VEHIVLE }}</td>
+                </tr>
+            </table>
+            
+        {% else %}
+            <p id="message">{{ error }}</p>
+        {% endif %}
+    </div>
 </body>
 </html>

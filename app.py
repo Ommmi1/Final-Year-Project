@@ -454,36 +454,79 @@ def receive_data():
     
 
 
+# @app.route('/exciseandcplc', methods=['POST', 'GET'])
+# def exciseandcplc():
+#     if request.method == 'POST':
+#         number_plate = request.form.get('NUMBER_PLATE')
+#         vehicle_info = get_vehicle_info(number_plate)
+
+#         if vehicle_info:
+#             message = "Vehicle information:"
+#         else:
+#             message = "Vehicle not found"
+#             # Process and display the vehicle_info dictionary as needed
+
+#         return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
+
+#     return render_template('search_form.html')
+@app.route('/main', methods=['POST', 'GET'])
+def main():
+    return render_template('main.html')
+
+
+
+
 @app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        number_plate = request.form.get('NUMBER_PLATE')
-        vehicle_info = get_vehicle_info(number_plate)
+        print('duck')
+        # return render_template('exciseandcplc.html')
 
+        number_plate=request.form['NUMBER_PLATE']
+        # data = request.json
+        
+        # return render_template('exciseandcplc.html')
+        
+        # number_plate = data.get('NUMBER_PLATE')
+
+        if not number_plate:
+            return jsonify({"error": "Number plate not provided"}), 400
+        
+
+        # Call the hosted API to get the vehicle information
+        vehicle_info = search_vehicle_info(number_plate)
+        # print(vehicle_info)
+        # return jsonify(vehicle_info)
+        
         if vehicle_info:
-            message = "Vehicle information:"
+            # If vehicle_info is a dictionary (not a string with error message), pass it to the template
+            # print('hello omer')
+            # print(vehicle_info)
+            return render_template('exciseandcplc.html',vehicle_info=vehicle_info)
+
+            # return render_template('exciseandcplc.html')
+            # return jsonify(vehicle_info)
         else:
-            message = "Vehicle not found"
-            # Process and display the vehicle_info dictionary as needed
+            # If vehicle_info is a string with an error message, pass it as 'error'
+            return render_template('exciseandcplc.html', error=vehicle_info)
 
-        return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
-
+    # Display the search form for GET requests
     return render_template('search_form.html')
 
 
 
 
-
-def get_vehicle_info(number_plate):
+def search_vehicle_info(number_plate):
     # API endpoint URL
     url = "https://web-production-39b9.up.railway.app/api/excisesearch"
     headers = {"Content-Type": "application/json"}
+
     # JSON payload containing the number_plate
-    payload = {"NUMBER_PLATE": number_plate}  # Ensure 'number_plate' key matches the API's expected key
+    payload = {"NUMBER_PLATE": number_plate}
 
     try:
         # Make the POST request with JSON data and set the 'Content-Type' header to 'application/json'
-        response = requests.post(url, json=payload, headers=headers)
+        response = requests.post(url, data=json.dumps(payload), headers=headers)
         response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
 
         try:
@@ -497,10 +540,85 @@ def get_vehicle_info(number_plate):
         # Check if the response contains vehicle information or an error message
         if "error" in response_data:
             # Vehicle not found
-            return None
+            return 'Vehicle not found'
         else:
             # Vehicle information found
-            return response_data
+            return response_data#{'SERIAL_NO': 1, 'NUMBER_PLATE': 'AAC-577', 'MAKE': 'TOYOTA', 'REG_DATE': '07Apr1996', 'TAX_PAYMENT': 'Jun302016', 'ENGINE_NO': '2E-1445464', 'VEHICLE_MODEL': 'COROLLA', 'BODY_TYPE': 'SALOON', 'OWNER_NAME': 'MUHAMMADALI', 'MODEL_YEAR': 1996, 'SEATING_CAPACITY': '4', 'CPLC': 'VehicleisClear', 'SAFE_CUSTODY': 'VehicleisClear', 'HORSE_POWER': '1300', 'CLASS_OF_VEHIVLE': 'PR'}127.0.0.1 - - [28/Jul/2023 15:53:14] "POST /exciseandcplc HTTP/1.1" 200 -
+
+    except requests.exceptions.RequestException as e:
+        # Handle any exceptions that occurred during the request
+        print(f"An error occurred: {e}")
+        return None
+
+
+@app.route('/cplcsearch', methods=['POST', 'GET'])
+def cplcsearch():
+    if request.method == 'POST':
+        # print('duck')
+        # return render_template('exciseandcplc.html')
+
+        number_plate=request.form['NUMBER_PLATE']
+        # data = request.json
+        
+        # return render_template('exciseandcplc.html')
+        
+        # number_plate = data.get('NUMBER_PLATE')
+
+        if not number_plate:
+            return jsonify({"error": "Number plate not provided"}), 400
+        
+
+        # Call the hosted API to get the vehicle information
+        vehicle_info = search_vehicle_info_cplc(number_plate)
+        # print(vehicle_info)
+        # return jsonify(vehicle_info)
+        
+        if vehicle_info:
+            # If vehicle_info is a dictionary (not a string with error message), pass it to the template
+            # print('hello omer')
+            # print(vehicle_info)
+            return render_template('cplcsearch.html',vehicle_info=vehicle_info)
+
+            # return render_template('exciseandcplc.html')
+            # return jsonify(vehicle_info)
+        else:
+            # If vehicle_info is a string with an error message, pass it as 'error'
+            return render_template('cplcsearch.html', error=vehicle_info)
+
+    # Display the search form for GET requests
+    return render_template('search_form_cplc.html')
+
+
+
+
+def search_vehicle_info_cplc(number_plate):
+    # API endpoint URL
+    url = "https://web-production-39b9.up.railway.app/api/cplcsearch"
+    headers = {"Content-Type": "application/json"}
+
+    # JSON payload containing the number_plate
+    payload = {"NUMBER_PLATE": number_plate}
+
+    try:
+        # Make the POST request with JSON data and set the 'Content-Type' header to 'application/json'
+        response = requests.post(url, data=json.dumps(payload), headers=headers)
+        response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
+
+        try:
+            # Attempt to parse the JSON data from the response
+            response_data = response.json()
+        except ValueError:
+            # Failed to parse JSON, return None indicating an error
+            print("Invalid JSON data received from the API.")
+            return None
+
+        # Check if the response contains vehicle information or an error message
+        if "error" in response_data:
+            # Vehicle not found
+            return 'Vehicle not found'
+        else:
+            # Vehicle information found
+            return response_data#{'SERIAL_NO': 1, 'NUMBER_PLATE': 'AAC-577', 'MAKE': 'TOYOTA', 'REG_DATE': '07Apr1996', 'TAX_PAYMENT': 'Jun302016', 'ENGINE_NO': '2E-1445464', 'VEHICLE_MODEL': 'COROLLA', 'BODY_TYPE': 'SALOON', 'OWNER_NAME': 'MUHAMMADALI', 'MODEL_YEAR': 1996, 'SEATING_CAPACITY': '4', 'CPLC': 'VehicleisClear', 'SAFE_CUSTODY': 'VehicleisClear', 'HORSE_POWER': '1300', 'CLASS_OF_VEHIVLE': 'PR'}127.0.0.1 - - [28/Jul/2023 15:53:14] "POST /exciseandcplc HTTP/1.1" 200 -
 
     except requests.exceptions.RequestException as e:
         # Handle any exceptions that occurred during the request
@@ -509,15 +627,11 @@ def get_vehicle_info(number_plate):
 
 
 
-
-
-
-
 if __name__ == '__main__':
     # db.create_all()
     # app.run(debug=True)
-    app.run()
-    # app.run(debug=True)
+    # app.run()
+    app.run(debug=True)
 
 
 
