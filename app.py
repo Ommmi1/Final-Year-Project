@@ -426,31 +426,32 @@ def user_main():
     return render_template('user_main.html')
 
 
-@app.route('/data/', methods=['POST'])
+@app.route('/data', methods=['POST']) # type: ignore
 def receive_data():
-    uid = request.form.get('uid')
-    lat = request.form.get('lat')
-    lng = request.form.get('lng')
-    print("UID:", uid)
-    print("Latitude:", lat)
-    print("Longitude:", lng)
-    try:
-        vehicle = vehicles.find_one({'rfid_tag': uid})
-        if vehicle:
-            number_plate = vehicle['number_plate']
-            location = {
-                        'lat': lat,
-                        'lng': lng,
-                        'timestamp': karachi_time,
-                        'number_plate': number_plate
-                    }
-            locations.insert_one(location)
-            return 'Inserted'
-        else:
-            return 'Vehicle not found'
-    except Exception as e:
-        print("Database error:", str(e))
-        return 'Error accessing database'
+    if request.method == 'POST':
+        uid = request.form['uid']
+        lat = request.form['lat']
+        lng = request.form['lng']
+        # print("UID:", uid)
+        # print("Latitude:", lat)
+        # print("Longitude:", lng)
+        try:
+            vehicle = vehicles.find_one({'rfid_tag': uid})
+            if vehicle:
+                number_plate = vehicle['number_plate']
+                location = {
+                            'lat': lat,
+                            'lng': lng,
+                            'timestamp': karachi_time,
+                            'number_plate': number_plate
+                        }
+                locations.insert_one(location)
+                return 'Inserted'
+            else:
+                return 'Vehicle not found'
+        except Exception as e:
+            print("Database error:", str(e))
+            return 'Error accessing database'
     
 
 
