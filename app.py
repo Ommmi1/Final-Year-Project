@@ -248,7 +248,7 @@ def vehicle_location():
                     location_list.append({
                         'lat': loc['lat'],
                         'lng': loc['lng'],
-                        'timestamp': loc['karachi_time']
+                        'timestamp': loc['timestamp']
                     })
                 return render_template('vehicle_location.html', location=location_list)
             else:
