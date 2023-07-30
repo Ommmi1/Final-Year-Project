@@ -11,7 +11,7 @@ from flask_login import UserMixin
 from flask_login import LoginManager
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from passlib.hash import bcrypt
+# from passlib.hash import bcrypt
 import requests
 import json
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -376,7 +376,7 @@ def update(id):
             return render_template('update.html', user=user, error='Username or email already exists')
         
         # Hash the password before updating
-        hashed_password = bcrypt.hash(password)
+        hashed_password = generate_password_hash(password) 
         
         # Update the user's information
         update_data = {
@@ -429,9 +429,9 @@ def user_main():
 @app.route('/data', methods=['POST']) # type: ignore
 def receive_data():
     if request.method == 'POST':
-        uid = request.form['uid']
-        lat = request.form['lat']
-        lng = request.form['lng']
+        uid = request.form.get('uid')
+        lat = request.form.get('lat')
+        lng = request.form.get('lng')
         # print("UID:", uid)
         # print("Latitude:", lat)
         # print("Longitude:", lng)
