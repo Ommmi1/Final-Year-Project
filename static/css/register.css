@@ -566,7 +566,7 @@
 .table {
 
   font-family: 'bold', sans-serif;
-  color: #333;
+  color: #000000;
   width: 100%;
   margin-left: var(--dl-space-space-units);
   font-size: 1.0rem;
@@ -574,12 +574,12 @@
 }
 
 td, th {
-  background-color: #c2e4f5;
-  padding: 8px;
+  background-color: #ffffff;
+  padding: 2px;
   
   }
 
   tr:hover {
-    background-color: #f2f2f2;
+    background-color: #77d0f0;
     }
 

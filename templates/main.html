@@ -1,14 +1,190 @@
-<!DOCTYPE html>
+<!---<!DOCTYPE html>
 <html>
 <head>
     <title>My Flask Api</title>
 </head>
 <body>
     <h1>Welcome to My Flask Api</h1>
-    <!-- Replace "hosted_app_url" with the actual URL of the hosted application -->
+     Replace "hosted_app_url" with the actual URL of the hosted application
 <a href="/exciseandcplc">Excise application</a>
 <br>
 <a href="/cplcsearch">Cplc application</a>
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">   --->
+
+<!-------------------------------------------- HEAD STARTS FROM HERE -------------------------------------->
+
+<head>
+    <title>FLASH  API</title>
+    <meta property="og:title" content="VEHICLE DETECTION SYSTEM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Open Sans;
+        font-size: 1rem;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.625;
+        color: var(--dl-color-secondary-400);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="shortcut icon"
+      href="static/css/photos/47324.png"
+      type="icon/png"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
+      data-tag="font"
+    />
+    <style>
+      html * {
+          -webkit-font-smoothing: antialiased;
+      }
+      input::placeholder, textarea::placeholder {
+         color: #d2d6da;
+      }
+    </style>
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+
+  <!---------------------------------------- HEAD ENDS HERE ----------------------------------------------->
+
+  <!------------------------------------- BODY STARTS FROM HERE ------------------------------------------>
+
+  <body>
+    <div>
+      <link href="static/css/home.css" rel="stylesheet" />
+      <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+      <div class="home-container">
+        <div data-role="Header" class="header-header">
+          <nav class="header-nav">
+            <div class="header-container">
+              <a class="header-navlink Large">
+                Vehicle Detection System
+              </a>
+              <div class="header-menu">
+                <a href="/" class="header-navlink1 Large">Home</a>
+                <a href="about_us" class="header-navlink2 Large">
+                  About Us
+                </a>
+                <a href="/main" class="header-navlink2 Large">
+                  EXCISE & CPLC
+                </a>
+              </div>
+              <div class="header-container1">
+                <div class="header-container2">
+                  <a href="login" class="header-navlink3">
+                    <div class="primary-pink-button-container">
+                      <button
+                        class="primary-pink-button-button button ButtonSmall"
+                      >
+                        <span>SIGN IN</span>
+                      </button>
+                    </div>
+                  </a>
+                </div>
+                <div data-role="BurgerMenu" class="header-burger-menu">
+                  <svg viewBox="0 0 1024 1024" class="header-icon">
+                    <path
+                      d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="home-hero">
+          <div class="home-container01">
+            <div class="home-card">
+              <h1 class="home-text HeadingOne">EXCISE AND CPLC</h1>
+              <h1 class="home-text01">
+                SELECT APPLICATION
+              </h1>
+              <div class="home-container02">
+                <div class="home-container03">
+                  <a href="/exciseandcplc" class="home-navlink">
+                    <div class="primary-pink-button-container">
+                      <button
+                        class="primary-pink-button-button button ButtonSmall"
+                      >
+                        <span>Excise Application</span>
+                      </button>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+
+              <div class="home-container02">
+                <div class="home-container03">
+                  <a href="/cplcsearch" class="home-navlink">
+                    <div class="primary-pink-button-container">
+                      <button
+                        class="primary-pink-button-button button ButtonSmall"
+                      >
+                        <span>CPLC Application</span>
+                      </button>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img
+          alt="image"
+          src="https://images.unsplash.com/photo-1551739440-5dd934d3a94a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
+          class="home-image"
+        />
+
+        <!----------------------------------- FOOTER STARTS FROM HERE ----------------------------------------------------->
+
+
+<footer class="footer-footer">
+    <div class="footer-container">
+      <div class="footer-container1">
+        <span>This project is created by UIT Students</span>
+      </div>
+      <div class="footer-container2">
+        <div class="footer-container3">
+          <span class="footer-text1 Large">TEAM MEMBERS</span>
+          <span class="footer-text2 Large">ADNAN SAMAD</span>
+          <span class="footer-text3">MUHAMMAD OMER SIDDIQUI</span>
+          <span class="footer-text4 Large">ALISHA HAMEED</span>
+          <span class="footer-text5 Large">HAFIZ TAHA SHARIF</span>
+        </div>
+      </div>
+    </div>
+    <img
+      alt="image"
+      src="static/css/photos/waves-white.svg"
+      class="footer-image"
+    />
+  </footer>
+  
+  
+  <!----------------------------------- FOOTER ENDS HERE ----------------------------------------------------->

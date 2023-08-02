@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect ,url_for,abort,jsonify
-from datetime import datetime
+from datetime import datetime,timedelta
 import pytz
 from flask import render_template, flash
 import re
@@ -25,7 +25,13 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 karachi_timezone = pytz.timezone('Asia/Karachi')
 utc_time = datetime.utcnow()
-karachi_time = utc_time.astimezone(karachi_timezone)
+karachi_time1 = utc_time.astimezone(karachi_timezone)
+# Add 5 hours to the Karachi time
+karachi_time = karachi_time1 + timedelta(hours=5)
+
+# Print the original and updated times
+# print("Original Karachi Time:", karachi_time)
+# print("Updated Karachi Time (+5 hours):", karachi_time_plus_5_hours)
 
 class User(UserMixin):
     def __init__(self, user_data):
@@ -455,21 +461,7 @@ def receive_data():
     
 
 
-# @app.route('/exciseandcplc', methods=['POST', 'GET'])
-# def exciseandcplc():
-#     if request.method == 'POST':
-#         number_plate = request.form.get('NUMBER_PLATE')
-#         vehicle_info = get_vehicle_info(number_plate)
 
-#         if vehicle_info:
-#             message = "Vehicle information:"
-#         else:
-#             message = "Vehicle not found"
-#             # Process and display the vehicle_info dictionary as needed
-
-#         return render_template('exciseandcplc.html', message=message, vehicle_info=vehicle_info)
-
-#     return render_template('search_form.html')
 @app.route('/main', methods=['POST', 'GET'])
 def main():
     return render_template('main.html')
@@ -480,7 +472,7 @@ def main():
 @app.route('/exciseandcplc', methods=['POST', 'GET'])
 def exciseandcplc():
     if request.method == 'POST':
-        print('duck')
+        # print('duck')
         # return render_template('exciseandcplc.html')
 
         number_plate=request.form['NUMBER_PLATE']
